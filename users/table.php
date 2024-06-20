@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<!-- <table class="table table-striped">
     <thead>
         <tr>
             <th>اسم المستخدم</th>
@@ -31,5 +31,5 @@
             <td><a href="#" class="btn btn-danger btn-sm">حذف</a></td>
         </tr>
     </tbody>
-</table>
+</table> -->
 

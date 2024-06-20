@@ -1,3 +1,7 @@
+<?php
+    require_once '../db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,45 @@
 <body>
     <div class="container text-center">
         <h2>Users Page</h2>
-        <?php echo file_get_contents('table.php'); ?>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>اسم المستخدم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>الصورة</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $sql = "SELECT * FROM `users`";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+
+                        while ($row = $result->fetch_assoc()) {
+
+                            echo "
+                                <tr>
+                                    <td>$row[name]</td>
+                                    <td>$row[email]</td>
+                                    <td>$row[file]</td>
+                                    <td><a href='users/add.php?id=$row[id]' class='btn btn-primary btn-sm'>تعديل</a></td>
+                                    <td><a href='#' class='btn btn-danger btn-sm'>حذف</a></td>
+                                </tr>          
+                            ";
+                        }
+
+                        mysqli_close($conn);
+
+                    }
+                ?>
+            </tbody>
+        </table>
+
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

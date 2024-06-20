@@ -1,4 +1,8 @@
 <?php
+    // connect to db
+    require_once 'db.php';
+
+
     $links = [
         'users' => 'users/index.php',
         'posts' => 'posts/index.php',
